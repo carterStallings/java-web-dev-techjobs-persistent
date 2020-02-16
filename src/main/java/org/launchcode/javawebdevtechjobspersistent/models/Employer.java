@@ -11,6 +11,10 @@ public class Employer extends AbstractEntity {
     @Size(min = 3, max = 70, message = "Location must be between 3 and 70 characters")
     private String location;
 
+    public Employer(@Size(min=3, max=70, message = "Location must be between 3 and 70 characters") String location) {
+        this.location = location;
+    }
+
     public Employer() {}
 
     public String getLocation() {
