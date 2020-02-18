@@ -39,7 +39,6 @@ public class SkillController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Skill");
-            model.addAttribute(new Skill());
             return "skills/add";
         }
 

@@ -36,6 +36,8 @@ public abstract class AbstractEntity {
         this.name = name;
     }
 
+    public AbstractEntity() {}
+
     @Override
     public String toString() {
         return name;
