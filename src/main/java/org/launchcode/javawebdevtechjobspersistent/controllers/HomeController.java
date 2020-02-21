@@ -2,7 +2,9 @@ package org.launchcode.javawebdevtechjobspersistent.controllers;
 
 import org.launchcode.javawebdevtechjobspersistent.models.Employer;
 import org.launchcode.javawebdevtechjobspersistent.models.Job;
+import org.launchcode.javawebdevtechjobspersistent.models.Skill;
 import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
+import org.launchcode.javawebdevtechjobspersistent.models.data.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,10 @@ public class HomeController {
     @Autowired
     private EmployerRepository employerRepository;
 
+    @Autowired
+    private SkillRepository skillRepository;
+
+
     @RequestMapping("")
     public String index(Model model) {
 
@@ -33,6 +39,7 @@ public class HomeController {
     public String displayAddJobForm(Model model) {
         model.addAttribute("title", "Add Job");
         model.addAttribute("employers", employerRepository.findAll());
+        model.addAttribute("skills", skillRepository.findAll());
         model.addAttribute(new Job());
         return "add";
     }
@@ -43,8 +50,11 @@ public class HomeController {
                                     @RequestParam Employer employer) {
 
         if (errors.hasErrors()) {
+            List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
+            newJob.setSkills(skillObjs);
             model.addAttribute("title", "Add Job");
-            model.addAttribute("employer", new Employer());
+            model.addAttribute("employer", newJob.getEmployer());
+            model.addAttribute("skills", newJob.getSkills());
             return "add";
         }
 
