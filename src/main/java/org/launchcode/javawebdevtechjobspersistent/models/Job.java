@@ -11,7 +11,7 @@ public class Job extends AbstractEntity{
     @NotNull(message = "Employer is required")
     private Employer employer;
 
-    @ManyToMany
+    @ManyToMany()
     private List<Skill> skills;
 
     public Job() {
