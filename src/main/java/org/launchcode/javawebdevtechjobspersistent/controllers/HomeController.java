@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;  // ADDED BY TOM
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -51,8 +52,10 @@ public class HomeController {
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
                                        Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {
-
         if (errors.hasErrors()) {
+            for (ObjectError e: errors.getAllErrors()) {
+                System.out.println(newJob.getEmployer());
+            }
             return "add";
         } else {
             List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
