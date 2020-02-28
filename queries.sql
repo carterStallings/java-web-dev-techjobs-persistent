@@ -15,3 +15,9 @@ WHERE (location = "Seattle");
 DROP TABLE job;
 
 ## Part 4: Test it with SQL
+
+SELECT distinct s.name, s.description
+FROM skill s
+INNER JOIN job_skills j on s.id = j.skills_id
+WHERE jobs_id != 0
+ORDER BY name ASC;
