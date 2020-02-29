@@ -69,7 +69,9 @@ public class HomeController {
 
         jobRepository.save(newJob);
 
-        return "redirect:";
+
+
+        return "redirect:" + "view/" + newJob.getId();
     }
 
     @GetMapping("view/{jobId}")
