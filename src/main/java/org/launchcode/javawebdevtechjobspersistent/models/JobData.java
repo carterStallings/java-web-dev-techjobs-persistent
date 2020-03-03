@@ -36,7 +36,6 @@ public class JobData {
         for (Job job : allJobs) {
 
             String aValue = getFieldValue(job, column);
-
             if (aValue != null && aValue.toLowerCase().contains(value.toLowerCase())) {
                 results.add(job);
             }
@@ -52,7 +51,7 @@ public class JobData {
         } else if (fieldName.equals("employer")){
             theValue = job.getEmployer().toString();
         } else {
-            theValue = job.toString();
+            theValue = job.getSkills().toString();
         }
 
         return theValue;

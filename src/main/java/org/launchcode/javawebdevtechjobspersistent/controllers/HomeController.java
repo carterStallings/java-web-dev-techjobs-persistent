@@ -71,7 +71,7 @@ public class HomeController {
 
 
 
-        return "redirect:" + "view/" + newJob.getId();
+        return "redirect:";
     }
 
     @GetMapping("view/{jobId}")

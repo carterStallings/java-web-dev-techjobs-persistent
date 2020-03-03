@@ -38,7 +38,7 @@ public class ListController {
 
         columnChoices.put("all", "All");
         columnChoices.put("employer", "Employer");
-        columnChoices.put("skill", "Skills");
+        columnChoices.put("skill", "Skill");
 
     }
 
@@ -58,11 +58,11 @@ public class ListController {
             model.addAttribute("title", "All Jobs");
         } else {
             jobs = JobData.findByColumnAndValue(column, value, jobRepository.findAll());
+            System.out.println(jobs);
             model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
         }
+
         model.addAttribute("jobs", jobs);
-        model.addAttribute("employers", employerRepository.findAll());
-        model.addAttribute("skills", skillRepository.findAll());
 
         return "list-jobs";
     }
