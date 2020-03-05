@@ -1,8 +1,12 @@
 ## Part 1: Test it with SQL
-id - int
-employer - VARCHAR
-name - VARCHAR
-skills - VARCHAR
+int(id)
+VARCHAR(employer)
+VARCHAR(name)
+VARCHAR(skills)
+
+int(id)
+VARCHAR(name)
+int(employer_id)
 
 ## Part 2: Test it with SQL
 SELECT name
@@ -19,5 +23,5 @@ DROP TABLE job;
 SELECT distinct s.name, s.description
 FROM skill s
 INNER JOIN job_skills j on s.id = j.skills_id
-WHERE jobs_id != 0
+WHERE jobs_id is not null
 ORDER BY name ASC;
